@@ -11,10 +11,14 @@ import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 
 /**
  *
@@ -26,17 +30,25 @@ public class FXMLDocumentController implements Initializable {
     private Button closeButton;
     
     @FXML
-    private TextField screen;
+    private AnchorPane display;
     
+    private double valor = 0;
+    private double cx;
+    private double cy;
+    private String displayNum = "";
+    
+    
+    @FXML
+    private TextField txDisplay;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        //TODO
+         txDisplay.setText(""+ valor);
     }           
 
     @FXML
     private void exitCalculator(ActionEvent event) {
-        Platform.exit();        
+        Platform.exit(); //é melhor que systemExit        
     }
 
     @FXML
@@ -48,135 +60,72 @@ public class FXMLDocumentController implements Initializable {
     private void eraseX(MouseEvent event) {
         closeButton.setText(null);
     }
+    
+     @FXML
+    private void evtTeclou(ActionEvent event) {
+        displayNum += ((Button)event.getSource()).getText();
+        txDisplay.setText(displayNum); 
+        /*  
+            Arrumar para quando colocar "." não colocar mais do que um.
+            Colocar Botão para zerar o valores.
+            Programar para o botão quando precionar para realizar a operação, mas quando permitido
+        lembrando que não pode dividir por Zero. Tenho que ter pelo menos um valor para somar.
 
-    @FXML
-    private void number7(ActionEvent event) {
-        if(!hasNum1) {
-            num1 = 7;
-        } else {
-            num2 = 7;
-        }
-    }
-
-    @FXML
-    private void number8(ActionEvent event) {
-        if(!hasNum1) {
-            num1 = 8;
-        } else {
-            num2 = 8;
-        }
-    }
-
-    @FXML
-    private void number9(ActionEvent event) {
-        if(!hasNum1) {
-            num1 = 9;
-        } else {
-            num2 = 9;
-        }
-    }
-
-    @FXML
-    private void number4(ActionEvent event) {
-        if(!hasNum1) {
-            num1 = 4;
-        } else {
-            num2 = 4;
-        }
-    }
-
-    @FXML
-    private void number5(ActionEvent event) {
-        if(!hasNum1) {
-            num1 = 5;
-        } else {
-            num2 = 5;
-        }
-    }
-
-    @FXML
-    private void number6(ActionEvent event) {
-        if(!hasNum1) {
-            num1 = 6;
-        } else {
-            num2 = 6;
-        }
-    }
-
-    @FXML
-    private void number1(ActionEvent event) {
-        if(!hasNum1) {
-            num1 = 1;
-        } else {
-            num2 = 7;
-        }
-    }
-
-    @FXML
-    private void number2(ActionEvent event) {
-        if(!hasNum1) {
-            num1 = 2;
-        } else {
-            num2 = 2;
-        }
-    }
-
-    @FXML
-    private void number3(ActionEvent event) {
-        if(!hasNum1) {
-            num1 = 3;
-        } else {
-            num2 = 3;
-        }
-    }
-
-    @FXML
-    private void number0(ActionEvent event) {
-        if(!hasNum1) {
-            num1 = 0;
-        } else {
-            num2 = 0;
-        }
-    }
-
-    private void hasNum1() {
-        hasNum1 = num1 >= 0;
-    }
+        */    
+    }    
+    
 
     @FXML
     private void opSum(ActionEvent event) {
-        if(hasNum1) {
-            op = 1;
-        }
+        
     }
 
     @FXML
     private void opLess(ActionEvent event) {
-        if(hasNum1) {
-            op = 2;
-        }
+       
     }
 
     @FXML
     private void opDivision(ActionEvent event) {
-        if(hasNum1) {
-            op = 3;
-        }
+        
     }
 
     @FXML
     private void opMultiply(ActionEvent event) {
-        if(hasNum1) {
-            op = 4;
-        }
+        
     }
 
     @FXML
     private void opEquals(ActionEvent event) {
-        if(num1>=0 && num2>=0) {
-
-        }
+        
     }
+
+    @FXML
+    private void mouseDragged(MouseEvent event) {
+        Stage stage = ((Stage)((Node)event.getSource()).getScene().getWindow());
+        stage.setX(event.getScreenX()+cx);
+        stage.setY(event.getScreenY()+cy);
+    }
+
+    @FXML
+    private void mousePressed(MouseEvent event) {
+        Stage stage = ((Stage)((Node)event.getSource()).getScene().getWindow());
+        cx=stage.getX() - event.getScreenX();
+        cy=stage.getY() - event.getScreenY();
+
+    }
+    
+    
+//    --> Faz essa inserção com "?", como um botão ao lado do "close" 
+//    @FXML
+//    private void evtSobre(ActionEvent event) {
+//        Alert alert = new  Alert(Alert.AlertType.INFORMATION);
+//        alert.setHeaderText("CalculatorFX versão beta");
+//        alert.setContentText("Desenvolvido por Irineu de Almeida Júnior");
+//        alert.showAndWait();
+//    }
+
+   
 
 
 
