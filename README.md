@@ -1,2 +1,4 @@
 # Calculator
- I created a calculator using Scene Builder, in order to train content seen at university (computer science)
+ I created a calculator using Scene Builder, in order to train content seen at university (computer science).
+ 
+ ![alt text](https://github.com/IrineuAlmeidaJr/Calculator/blob/main/ImageCalculator.png?raw=true)
