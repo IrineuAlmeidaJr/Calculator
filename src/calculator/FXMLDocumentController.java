@@ -14,7 +14,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -36,6 +35,9 @@ public class FXMLDocumentController implements Initializable {
     private double cx;
     private double cy;
     private String displayNum = "";
+    private boolean hasDot = false;
+    private boolean hasOperator = false;
+    private String operator;
     
     
     @FXML
@@ -62,9 +64,19 @@ public class FXMLDocumentController implements Initializable {
     }
     
      @FXML
-    private void evtTeclou(ActionEvent event) {
-        displayNum += ((Button)event.getSource()).getText();
-        txDisplay.setText(displayNum); 
+    private void evtClickNum(ActionEvent event) {
+        String tempNum = ((Button)event.getSource()).getText();
+        if(tempNum.equals(".")) {
+            if(!hasDot) {
+                displayNum += tempNum;
+                txDisplay.setText(displayNum); 
+                hasDot = true;
+            }      
+            return;
+        } 
+        displayNum += tempNum;
+        txDisplay.setText(displayNum);         
+        
         /*  
             Arrumar para quando colocar "." não colocar mais do que um.
             Colocar Botão para zerar o valores.
@@ -76,28 +88,58 @@ public class FXMLDocumentController implements Initializable {
     
 
     @FXML
-    private void opSum(ActionEvent event) {
-        
-    }
-
-    @FXML
-    private void opLess(ActionEvent event) {
-       
-    }
-
-    @FXML
-    private void opDivision(ActionEvent event) {
-        
-    }
-
-    @FXML
-    private void opMultiply(ActionEvent event) {
-        
+    private void pressOperator(ActionEvent event) {
+        if(!hasOperator) {
+            valor = Double.parseDouble(displayNum);
+            displayNum = "";
+            hasDot = false;
+            hasOperator = true;
+            txDisplay.setText(displayNum); 
+            operator = ((Button)event.getSource()).getText();             
+            return;
+        }
+        txDisplay.setText("Press equal before");         
     }
 
     @FXML
     private void opEquals(ActionEvent event) {
-        
+        switch(operator) {
+            
+            case "+":   
+                valor += Double.parseDouble(displayNum);
+                displayNum = Double.toString(valor);
+                txDisplay.setText(displayNum); 
+                hasOperator = false;
+                break;
+                
+            case "-":   
+                valor -= Double.parseDouble(displayNum);
+                displayNum = Double.toString(valor);
+                txDisplay.setText(displayNum);
+                hasOperator = false;
+                break;
+                
+            case "÷": 
+                double num = Double.parseDouble(displayNum);
+                if(num != 0) {
+                    valor /= num;
+                    displayNum = Double.toString(valor);
+                    txDisplay.setText(displayNum); 
+                } else {
+                    displayNum = "";
+                    txDisplay.setText("Undefined");
+                }  
+                hasOperator = false;
+                break;
+                
+            case "x":   
+                valor *= Double.parseDouble(displayNum);
+                displayNum = Double.toString(valor);
+                txDisplay.setText(displayNum);
+                hasOperator = false;
+                break; 
+                
+        }
     }
 
     @FXML
@@ -115,8 +157,12 @@ public class FXMLDocumentController implements Initializable {
 
     }
     
-    
-//    --> Faz essa inserção com "?", como um botão ao lado do "close" 
+//    *** Está com problema quando, ao exemplo, digito 10 + 10, aperto =, exibe resultado eu não 
+//    poderia digitar a não ser que tenha um operador antes ### ATENÇÃO ---> fazer esse primeiro
+//    
+//    [1] -> Implemetar um botão para encerar as operações já realizadas para fazer uma nova
+//    seria como na calculadoras que tem a letra "C" ou "AC", para zerar; 
+//    [2] -> Faz essa inserção com "?", como um botão ao lado do "close";
 //    @FXML
 //    private void evtSobre(ActionEvent event) {
 //        Alert alert = new  Alert(Alert.AlertType.INFORMATION);
@@ -124,10 +170,6 @@ public class FXMLDocumentController implements Initializable {
 //        alert.setContentText("Desenvolvido por Irineu de Almeida Júnior");
 //        alert.showAndWait();
 //    }
-
-   
-
-
 
 
 }

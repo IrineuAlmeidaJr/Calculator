@@ -12,7 +12,7 @@
    <children>
       <HBox alignment="CENTER" layoutX="16.0" layoutY="136.0" prefHeight="69.0" prefWidth="319.0" spacing="17.0" style="-fx-background-color: black;">
          <children>
-            <Button alignment="CENTER" mnemonicParsing="false" onAction="#evtTeclou" prefHeight="69.0" prefWidth="67.0" text="7">
+            <Button alignment="CENTER" mnemonicParsing="false" onAction="#evtClickNum" prefHeight="69.0" prefWidth="67.0" text="7">
                <HBox.margin>
                   <Insets bottom="1.5" left="1.5" right="1.5" top="1.5" />
                </HBox.margin>
@@ -20,7 +20,7 @@
                   <Font size="24.0" />
                </font>
             </Button>
-            <Button alignment="CENTER" mnemonicParsing="false" onAction="#evtTeclou" prefHeight="69.0" prefWidth="67.0" text="8">
+            <Button alignment="CENTER" mnemonicParsing="false" onAction="#evtClickNum" prefHeight="69.0" prefWidth="67.0" text="8">
                <HBox.margin>
                   <Insets bottom="1.5" left="1.5" right="1.5" top="1.5" />
                </HBox.margin>
@@ -28,7 +28,7 @@
                   <Font size="24.0" />
                </font>
             </Button>
-            <Button alignment="CENTER" mnemonicParsing="false" onAction="#evtTeclou" prefHeight="69.0" prefWidth="67.0" text="9">
+            <Button alignment="CENTER" mnemonicParsing="false" onAction="#evtClickNum" prefHeight="69.0" prefWidth="67.0" text="9">
                <HBox.margin>
                   <Insets bottom="1.5" left="1.5" right="1.5" top="1.5" />
                </HBox.margin>
@@ -36,7 +36,7 @@
                   <Font size="24.0" />
                </font>
             </Button>
-            <Button alignment="CENTER" mnemonicParsing="false" onAction="#opMultiply" prefHeight="69.0" prefWidth="67.0" style="-fx-background-color: #ffbc40;" text="x" textFill="WHITE">
+            <Button alignment="CENTER" mnemonicParsing="false" onAction="#pressOperator" prefHeight="69.0" prefWidth="67.0" style="-fx-background-color: #ffbc40;" text="x" textFill="WHITE">
                <HBox.margin>
                   <Insets bottom="1.5" left="1.5" right="1.5" top="1.5" />
                </HBox.margin>
@@ -48,7 +48,7 @@
       </HBox>
       <HBox alignment="CENTER" layoutX="15.0" layoutY="218.0" prefHeight="69.0" prefWidth="319.0" spacing="17.0" style="-fx-background-color: black;">
          <children>
-            <Button alignment="CENTER" mnemonicParsing="false" onAction="#evtTeclou" prefHeight="69.0" prefWidth="67.0" text="4">
+            <Button alignment="CENTER" mnemonicParsing="false" onAction="#evtClickNum" prefHeight="69.0" prefWidth="67.0" text="4">
                <HBox.margin>
                   <Insets bottom="1.5" left="1.5" right="1.5" top="1.5" />
                </HBox.margin>
@@ -56,7 +56,7 @@
                   <Font size="24.0" />
                </font>
             </Button>
-            <Button alignment="CENTER" mnemonicParsing="false" onAction="#evtTeclou" prefHeight="69.0" prefWidth="67.0" text="5">
+            <Button alignment="CENTER" mnemonicParsing="false" onAction="#evtClickNum" prefHeight="69.0" prefWidth="67.0" text="5">
                <HBox.margin>
                   <Insets bottom="1.5" left="1.5" right="1.5" top="1.5" />
                </HBox.margin>
@@ -64,7 +64,7 @@
                   <Font size="24.0" />
                </font>
             </Button>
-            <Button alignment="CENTER" mnemonicParsing="false" onAction="#evtTeclou" prefHeight="69.0" prefWidth="67.0" text="6">
+            <Button alignment="CENTER" mnemonicParsing="false" onAction="#evtClickNum" prefHeight="69.0" prefWidth="67.0" text="6">
                <HBox.margin>
                   <Insets bottom="1.5" left="1.5" right="1.5" top="1.5" />
                </HBox.margin>
@@ -72,7 +72,7 @@
                   <Font size="24.0" />
                </font>
             </Button>
-            <Button alignment="CENTER" mnemonicParsing="false" onAction="#opDivision" prefHeight="69.0" prefWidth="67.0" style="-fx-background-color: #ffbc40;" text="÷" textFill="WHITE">
+            <Button alignment="CENTER" mnemonicParsing="false" onAction="#pressOperator" prefHeight="69.0" prefWidth="67.0" style="-fx-background-color: #ffbc40;" text="÷" textFill="WHITE">
                <HBox.margin>
                   <Insets bottom="1.5" left="1.5" right="1.5" top="1.5" />
                </HBox.margin>
@@ -84,7 +84,7 @@
       </HBox>
       <HBox alignment="CENTER" layoutX="14.0" layoutY="302.0" prefHeight="69.0" prefWidth="319.0" spacing="17.0" style="-fx-background-color: black;">
          <children>
-            <Button alignment="CENTER" mnemonicParsing="false" onAction="#evtTeclou" prefHeight="69.0" prefWidth="67.0" text="1">
+            <Button alignment="CENTER" mnemonicParsing="false" onAction="#evtClickNum" prefHeight="69.0" prefWidth="67.0" text="1">
                <font>
                   <Font size="24.0" />
                </font>
@@ -92,7 +92,7 @@
                   <Insets bottom="1.5" left="1.5" right="1.5" top="1.5" />
                </HBox.margin>
             </Button>
-            <Button alignment="CENTER" mnemonicParsing="false" onAction="#evtTeclou" prefHeight="69.0" prefWidth="67.0" text="2">
+            <Button alignment="CENTER" mnemonicParsing="false" onAction="#evtClickNum" prefHeight="69.0" prefWidth="67.0" text="2">
                <HBox.margin>
                   <Insets bottom="1.5" left="1.5" right="1.5" top="1.5" />
                </HBox.margin>
@@ -100,7 +100,7 @@
                   <Font size="24.0" />
                </font>
             </Button>
-            <Button alignment="CENTER" mnemonicParsing="false" onAction="#evtTeclou" prefHeight="69.0" prefWidth="67.0" text="3">
+            <Button alignment="CENTER" mnemonicParsing="false" onAction="#evtClickNum" prefHeight="69.0" prefWidth="67.0" text="3">
                <HBox.margin>
                   <Insets bottom="1.5" left="1.5" right="1.5" top="1.5" />
                </HBox.margin>
@@ -108,7 +108,7 @@
                   <Font size="24.0" />
                </font>
             </Button>
-            <Button alignment="CENTER" mnemonicParsing="false" onAction="#opLess" prefHeight="69.0" prefWidth="67.0" style="-fx-background-color: #ffbc40;" text="-" textFill="WHITE">
+            <Button alignment="CENTER" mnemonicParsing="false" onAction="#pressOperator" prefHeight="69.0" prefWidth="67.0" style="-fx-background-color: #ffbc40;" text="-" textFill="WHITE">
                <HBox.margin>
                   <Insets bottom="1.5" left="1.5" right="1.5" top="1.5" />
                </HBox.margin>
@@ -120,7 +120,7 @@
       </HBox>
       <HBox alignment="CENTER" layoutX="16.0" layoutY="383.0" prefHeight="69.0" prefWidth="319.0" spacing="17.0" style="-fx-background-color: black;">
          <children>
-            <Button mnemonicParsing="false" onAction="#evtTeclou" prefHeight="69.0" prefWidth="67.0" style="-fx-background-radius: 0 0 0 25;" text="0">
+            <Button mnemonicParsing="false" onAction="#evtClickNum" prefHeight="69.0" prefWidth="67.0" style="-fx-background-radius: 0 0 0 25;" text="0">
                <HBox.margin>
                   <Insets bottom="1.5" left="1.5" right="1.5" top="1.5" />
                </HBox.margin>
@@ -128,7 +128,7 @@
                   <Font size="24.0" />
                </font>
             </Button>
-            <Button mnemonicParsing="false" onAction="#evtTeclou" prefHeight="69.0" prefWidth="67.0" text=".">
+            <Button mnemonicParsing="false" onAction="#evtClickNum" prefHeight="69.0" prefWidth="67.0" text=".">
                <HBox.margin>
                   <Insets bottom="1.5" left="1.5" right="1.5" top="1.5" />
                </HBox.margin>
@@ -144,7 +144,7 @@
                   <Font size="24.0" />
                </font>
             </Button>
-            <Button mnemonicParsing="false" onAction="#opSum" prefHeight="69.0" prefWidth="67.0" style="-fx-background-color: #ffbc40; -fx-background-radius: 0 0 25 0;" text="+" textFill="WHITE">
+            <Button mnemonicParsing="false" onAction="#pressOperator" prefHeight="69.0" prefWidth="67.0" style="-fx-background-color: #ffbc40; -fx-background-radius: 0 0 25 0;" text="+" textFill="WHITE">
                <HBox.margin>
                   <Insets bottom="1.5" left="1.5" right="1.5" top="1.5" />
                </HBox.margin>
