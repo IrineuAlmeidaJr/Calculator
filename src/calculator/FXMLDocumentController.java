@@ -34,7 +34,11 @@ public class FXMLDocumentController implements Initializable {
     private double valor = 0;
     private double cx;
     private double cy;
-    private String displayNum = "";
+    private String displayNum = "0"; // Precisei colocar "0", 
+                                    //pois, dava erro se eu realiza-se qualquer operação
+                                    //sem antes ter um valor, como ele pega de displayNum
+                                    //preciso zera ele.
+    private boolean hasPressEqualButton = false;
     private boolean hasDot = false;
     private boolean hasOperator = false;
     private String operator;
@@ -42,6 +46,8 @@ public class FXMLDocumentController implements Initializable {
     
     @FXML
     private TextField txDisplay;
+    @FXML
+    private Button closeButton1;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -65,24 +71,21 @@ public class FXMLDocumentController implements Initializable {
     
      @FXML
     private void evtClickNum(ActionEvent event) {
-        String tempNum = ((Button)event.getSource()).getText();
-        if(tempNum.equals(".")) {
-            if(!hasDot) {
-                displayNum += tempNum;
-                txDisplay.setText(displayNum); 
-                hasDot = true;
-            }      
+        if(!hasPressEqualButton) {
+            String tempNum = ((Button)event.getSource()).getText();
+            if(tempNum.equals(".")) {
+                if(!hasDot) {
+                    displayNum += tempNum;
+                    txDisplay.setText(displayNum); 
+                    hasDot = true;
+                }      
+                return;
+            } 
+            displayNum += tempNum;
+            txDisplay.setText(displayNum);
             return;
         } 
-        displayNum += tempNum;
-        txDisplay.setText(displayNum);         
-        
-        /*              
-            Colocar Botão para zerar o valores.
-            Programar para o botão quando precionar para realizar a operação, mas quando permitido
-        lembrando que não pode dividir por Zero. Tenho que ter pelo menos um valor para somar.
-
-        */    
+        txDisplay.setText("Press operator before");                   
     }    
     
         
@@ -91,6 +94,7 @@ public class FXMLDocumentController implements Initializable {
         if(!hasOperator) {
             valor = Double.parseDouble(displayNum);
             displayNum = "";
+            hasPressEqualButton = false;
             hasDot = false;
             hasOperator = true;
             txDisplay.setText(displayNum); 
@@ -109,6 +113,7 @@ public class FXMLDocumentController implements Initializable {
                 displayNum = Double.toString(valor);
                 txDisplay.setText(displayNum); 
                 hasOperator = false;
+                hasPressEqualButton = true;
                 break;
                 
             case "-":   
@@ -116,6 +121,7 @@ public class FXMLDocumentController implements Initializable {
                 displayNum = Double.toString(valor);
                 txDisplay.setText(displayNum);
                 hasOperator = false;
+                hasPressEqualButton = true;
                 break;
                 
             case "÷": 
@@ -125,9 +131,10 @@ public class FXMLDocumentController implements Initializable {
                     displayNum = Double.toString(valor);
                     txDisplay.setText(displayNum); 
                 } else {
-                    displayNum = "";
+                    displayNum = "0";
                     txDisplay.setText("Undefined");
                 }  
+                hasPressEqualButton = true;
                 hasOperator = false;
                 break;
                 
@@ -135,6 +142,7 @@ public class FXMLDocumentController implements Initializable {
                 valor *= Double.parseDouble(displayNum);
                 displayNum = Double.toString(valor);
                 txDisplay.setText(displayNum);
+                hasPressEqualButton = true;
                 hasOperator = false;
                 break; 
                 
@@ -155,20 +163,23 @@ public class FXMLDocumentController implements Initializable {
         cy=stage.getY() - event.getScreenY();
 
     }
-    
-//    *** Está com problema quando, ao exemplo, digito 10 + 10, aperto =, exibe resultado eu não 
-//    poderia digitar a não ser que tenha um operador antes ### ATENÇÃO ---> fazer esse primeiro
-//    
-//    [1] -> Implemetar um botão para encerar as operações já realizadas para fazer uma nova
-//    seria como na calculadoras que tem a letra "C" ou "AC", para zerar; 
-//    [2] -> Faz essa inserção com "?", como um botão ao lado do "close";
-//    @FXML
-//    private void evtSobre(ActionEvent event) {
-//        Alert alert = new  Alert(Alert.AlertType.INFORMATION);
-//        alert.setHeaderText("CalculatorFX versão beta");
-//        alert.setContentText("Desenvolvido por Irineu de Almeida Júnior");
-//        alert.showAndWait();
-//    }
 
+
+    @FXML
+    private void evtAbout(ActionEvent event) {
+        Alert alert = new  Alert(Alert.AlertType.INFORMATION);
+        alert.setHeaderText("CalculatorFX versão beta");
+        alert.setContentText("Desenvolvido por Irineu de Almeida Júnior");
+        alert.showAndWait();
+    }
+
+    @FXML
+    private void evtErase(ActionEvent event) {
+        hasPressEqualButton = false;
+        hasDot = false;
+        hasOperator = false;
+        displayNum = "0";
+        txDisplay.setText(displayNum);        
+    }
 
 }
