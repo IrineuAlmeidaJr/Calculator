@@ -77,8 +77,7 @@ public class FXMLDocumentController implements Initializable {
         displayNum += tempNum;
         txDisplay.setText(displayNum);         
         
-        /*  
-            Arrumar para quando colocar "." não colocar mais do que um.
+        /*              
             Colocar Botão para zerar o valores.
             Programar para o botão quando precionar para realizar a operação, mas quando permitido
         lembrando que não pode dividir por Zero. Tenho que ter pelo menos um valor para somar.
@@ -86,7 +85,7 @@ public class FXMLDocumentController implements Initializable {
         */    
     }    
     
-
+        
     @FXML
     private void pressOperator(ActionEvent event) {
         if(!hasOperator) {
